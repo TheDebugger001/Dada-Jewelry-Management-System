@@ -1,43 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { FaCog, FaPlus } from 'react-icons/fa'
-import { FaBox } from 'react-icons/fa'
-import { FaBitbucket } from 'react-icons/fa'
-// import { FaPlus } from 'react-icons/fa'
 import { FiPlus } from 'react-icons/fi'
-import { FaHouseUser } from 'react-icons/fa'
 
 
 
-const AdminDashboard = () => {
+
+const Archived = () => {
   
   const { hovered, setHovered} = useState(false)
   return (
     <>
-    {/* <div className='w-full min-h-screen flex overflow-hidden'>*/}
-      
-      {/* The start of the Sidebar */}
-      {/* <div className='w-1/5 h-screen bg-gray-800 flex flex-col'>
-        <div className='w-[19.5em] h-16 bg-gray-300 rounded-r-full ml-1 mt-4 flex items-center justify-center'>
-          <img src="../images/Dada-logo.png" alt="" className='w-2/6 ml-3' />
-        </div>
-        <hr className='mt-4 w-full h-[.1em] bg-gray-400 text-transparent flex flex-col items-center' />
-        <div className='w-[19.5em] h-14 bg-gray-600/30 mt-4 rounded-l-full flex items-center hover:bg-gray-600/50 focus:bg-white/70'>
-          <FaHouseUser className='ml-10 w-4 h-4 text-gray-300' />
-          <p className='ml-4 font-light text-lg text-gray-300'>Dashboard</p>
-        </div>
-        <div className='w-[19.5em] h-14 bg-gray-600/30 mt-4 rounded-l-full flex items-center hover:bg-gray-600/50 active:bg-white/70 active:text-gray-600'>
-          <FaBox className='ml-10 w-4 h-4 text-gray-300' />
-          <p className='ml-4 font-light text-lg text-gray-300'>Archived</p>
-        </div>
-        <div className='w-[19.5em] h-14 bg-gray-600/30 mt-4 rounded-l-full flex items-center hover:bg-gray-600/50'>
-          <FaCog className='ml-10 w-4 h-4 text-gray-300' />
-          <p className='ml-4 font-light text-lg text-gray-300'>Manage Accounts</p>
-        </div>
-      </div> */}
-
-
       {/* Start of the Navbar and Control bar*/}
       <div className='w-4/5 flex flex-col items-center justify-between'>
         {/* Navbar */}
@@ -47,10 +20,13 @@ const AdminDashboard = () => {
 
         {/* Starts of all notes */}
         <div className='w-24/25 h-10/11 bg-gray-100 relative rounded-md'>
+         <div className='w-full h-10 flex items-center justify-center'>
+            <p className='text-4xl italic text-gray-800'>Archived Notes</p>
+         </div>
           {/* Control bar */}
           <div className='w-full h-16 bg-gray-300 mt-4 flex items-center justify-between'>
             <div className='w-2/7 h-full flex items-center justify-evenly'>
-              <button className='hover:border-2 hover:border-gray-800 hover:bg-transparent hover:text-gray-800 transition duration-150 w-3/6 h-3/5 rounded-lg font-light text-gray-200 bg-gray-800'>Add to Archive</button>
+              <button className='hover:border-2 hover:border-gray-800 hover:bg-transparent hover:text-gray-800 transition duration-150 w-3/6 h-3/5 rounded-lg font-light text-gray-200 bg-gray-800'>Remove from Archive</button>
               <button className='w-30 h-3/5 rounded-md text-gray-200 flex items-center justify-evenly bg-red-800'>Delete</button>
             </div>
             <div className='w-3/7 h-full flex items-center justify-evenly'>
@@ -122,4 +98,4 @@ const AdminDashboard = () => {
   )
 }
 
-export default AdminDashboard
+export default Archived
