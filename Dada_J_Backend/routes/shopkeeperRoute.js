@@ -4,7 +4,7 @@ const { registerShopkeeper } = require("../controllers/shopkeeperController")
 const { 
    shopkeeperValidationRules,
    validateShopkeeper 
-} = require("../middleware/validateShopkeeper")
+} = require("../middleware/shopkeeper.middleware")
 
 router.post('/register', shopkeeperValidationRules, validateShopkeeper, registerShopkeeper)
 

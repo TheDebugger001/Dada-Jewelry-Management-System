@@ -1,4 +1,6 @@
 
+const jwt = require("jsonwebtoken")
+
 const { body, validationResult } = require('express-validator')
 
 const shopkeeperValidationRules = [
@@ -31,6 +33,15 @@ const validateShopkeeper = (req, res, next) => {
    }
 
    next()
+}
+
+const authShopkeeper = async (req, res, next) => {
+   const authHeader = req.headers.authorization
+   if(!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "No token sent"})
+   }
+
+   const token = authHeader.split(" ")[1]
 }
 
 module.exports = {
