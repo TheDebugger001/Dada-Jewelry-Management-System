@@ -36,15 +36,32 @@ const validateShopkeeper = (req, res, next) => {
 }
 
 const authShopkeeper = async (req, res, next) => {
-   const authHeader = req.headers.authorization
-   if(!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({ message: "No token sent"})
-   }
+   try{
 
-   const token = authHeader.split(" ")[1]
+      const authHeader = req.headers.authorization
+      if(!authHeader || !authHeader.startsWith("Bearer ")) {
+         return res.status(401).json({ message: "No token sent"})
+      }
+   
+      const token = authHeader.split(" ")[1]
+   
+      const decode = jwt.verify(token, process.env.JWT_SECRET_KEY)
+   
+      if(decode.role !== 'shopkeeper') {
+         return res.status(403).json({ message: "Access forbidden: not a shopkeeper"})
+      }
+   
+      req.shopkeeper = decode
+   
+      next()
+
+   } catch (error) {
+      res.status(500).json({ error: "Error, Server error", error})
+   }
 }
 
 module.exports = {
    shopkeeperValidationRules,
-   validateShopkeeper
+   validateShopkeeper,
+   authShopkeeper
 }

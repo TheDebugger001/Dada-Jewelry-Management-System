@@ -89,5 +89,5 @@ exports.loginShopkeeper = async (req, res) => {
 }
 
 exports.viewProfile = async (req, res) => {
-   
+
 }
